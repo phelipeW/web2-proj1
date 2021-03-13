@@ -55,11 +55,12 @@
   <script>
     function getData () {
       var className = document.getElementById("className").value;
-      if(className === '' || className.length <= 3){
+      if(className.length >= 1 && className.length <= 3){
         document.getElementById("error").innerHTML = "Entrada inválida";
       } else {
         axios.get(`https://www.dnd5eapi.co/api/classes/${className}`).then(
           response => {    
+            console.log(response)
             var rows = '';     
             var table = `<table id="tabela"><tr><th>Nome</th><th>URL</th></tr>`
             if(response?.data?.results){
@@ -72,9 +73,12 @@
             rows += " </table>"
             table += rows;
             document.getElementById("tabela").innerHTML = table;
+            
             document.getElementById("error").innerHTML = "";
           }
-        )
+        ).catch(error => {
+          document.getElementById("error").innerHTML = "Nome não encontrado na api";
+        })
       }
     }
   </script>
