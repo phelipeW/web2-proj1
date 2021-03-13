@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "phelipeweb2",
+    "public": "y",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
